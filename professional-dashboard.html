@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SevaMitra - Professional Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .hidden-tab { display: none; }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <div class="flex h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-purple-700 text-white flex flex-col">
+      <div class="p-6 text-center text-2xl font-bold border-b border-purple-500">
+        SevaMitra Pro
+      </div>
+      <nav class="flex-1 p-4 space-y-4">
+        <button onclick="showTab('dashboard')" class="w-full text-left block px-4 py-2 rounded-lg bg-purple-600">Dashboard</button>
+        <button onclick="showTab('services')" class="w-full text-left block px-4 py-2 rounded-lg hover:bg-purple-600">My Services</button>
+        <button onclick="showTab('bookings')" class="w-full text-left block px-4 py-2 rounded-lg hover:bg-purple-600">Bookings</button>
+        <button onclick="showTab('earnings')" class="w-full text-left block px-4 py-2 rounded-lg hover:bg-purple-600">Earnings</button>
+        <button onclick="showTab('profile')" class="w-full text-left block px-4 py-2 rounded-lg hover:bg-purple-600">Profile</button>
+        <a href="professional-login.html" class="block px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-center">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 overflow-y-auto">
+
+      <!-- Dashboard -->
+      <div id="dashboard" class="tab-content">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Welcome, Professional 👋</h1>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="bg-white rounded-xl shadow p-6">
+            <h2 class="text-lg font-semibold text-gray-700">Upcoming Bookings</h2>
+            <p class="text-3xl font-bold text-purple-700 mt-4">5</p>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <h2 class="text-lg font-semibold text-gray-700">This Month's Earnings</h2>
+            <p class="text-3xl font-bold text-purple-700 mt-4">₹12,400</p>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <h2 class="text-lg font-semibold text-gray-700">Rating</h2>
+            <p class="text-3xl font-bold text-purple-700 mt-4">4.8 ⭐</p>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6">
+            <h2 class="text-lg font-semibold text-gray-700">Notifications</h2>
+            <p class="text-3xl font-bold text-purple-700 mt-4">3</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Services -->
+      <div id="services" class="tab-content hidden-tab">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">My Services</h1>
+        <div class="space-y-4">
+          <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
+            <div>
+              <h2 class="text-lg font-semibold">AC Repair</h2>
+              <p class="text-gray-500">₹500 per service | 120 bookings</p>
+            </div>
+            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Edit</button>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
+            <div>
+              <h2 class="text-lg font-semibold">Home Cleaning</h2>
+              <p class="text-gray-500">₹1500 per service | 80 bookings</p>
+            </div>
+            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Edit</button>
+          </div>
+        </div>
+        <button class="mt-6 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">+ Add New Service</button>
+      </div>
+
+      <!-- Bookings -->
+      <div id="bookings" class="tab-content hidden-tab">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Bookings</h1>
+        <table class="w-full bg-white rounded-xl shadow text-left border-collapse">
+          <thead>
+            <tr class="border-b bg-gray-100">
+              <th class="py-2 px-4">Customer</th>
+              <th class="py-2 px-4">Service</th>
+              <th class="py-2 px-4">Date</th>
+              <th class="py-2 px-4">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="py-2 px-4">Amit Sharma</td>
+              <td class="py-2 px-4">AC Repair</td>
+              <td class="py-2 px-4">31 Aug, 2025</td>
+              <td class="py-2 px-4 text-green-600 font-semibold">Completed</td>
+            </tr>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="py-2 px-4">Neha Gupta</td>
+              <td class="py-2 px-4">Home Cleaning</td>
+              <td class="py-2 px-4">02 Sep, 2025</td>
+              <td class="py-2 px-4 text-yellow-600 font-semibold">Upcoming</td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="py-2 px-4">Rohit Verma</td>
+              <td class="py-2 px-4">Salon Service</td>
+              <td class="py-2 px-4">03 Sep, 2025</td>
+              <td class="py-2 px-4 text-yellow-600 font-semibold">Upcoming</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Earnings -->
+      <div id="earnings" class="tab-content hidden-tab">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Earnings</h1>
+        <div class="bg-white rounded-xl shadow p-6">
+          <h2 class="text-lg font-semibold">Earnings Summary</h2>
+          <p class="mt-2 text-gray-600">This Month: <span class="text-purple-700 font-bold">₹12,400</span></p>
+          <p class="mt-1 text-gray-600">Last Month: <span class="text-purple-700 font-bold">₹10,200</span></p>
+        </div>
+        <div class="mt-6 bg-white rounded-xl shadow p-6">
+          <h2 class="text-lg font-semibold mb-4">Transaction History</h2>
+          <ul class="space-y-3">
+            <li class="flex justify-between">
+              <span>AC Repair - Amit Sharma</span>
+              <span class="text-green-600 font-semibold">+₹500</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Home Cleaning - Neha Gupta</span>
+              <span class="text-green-600 font-semibold">+₹1500</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Salon Service - Rohit Verma</span>
+              <span class="text-green-600 font-semibold">+₹800</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Profile -->
+      <div id="profile" class="tab-content hidden-tab">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">My Profile</h1>
+        <div class="bg-white rounded-xl shadow p-6 space-y-4">
+          <div>
+            <label class="block text-gray-600 font-medium">Full Name</label>
+            <input type="text" value="Rahul Kumar" class="mt-1 w-full border rounded-lg p-2"/>
+          </div>
+          <div>
+            <label class="block text-gray-600 font-medium">Email</label>
+            <input type="email" value="rahul.kumar@example.com" class="mt-1 w-full border rounded-lg p-2"/>
+          </div>
+          <div>
+            <label class="block text-gray-600 font-medium">Phone</label>
+            <input type="text" value="+91 9876543210" class="mt-1 w-full border rounded-lg p-2"/>
+          </div>
+          <div>
+            <label class="block text-gray-600 font-medium">Experience</label>
+            <input type="text" value="5 Years" class="mt-1 w-full border rounded-lg p-2"/>
+          </div>
+          <button class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700">Save Changes</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.add('hidden-tab');
+      });
+      document.getElementById(tabId).classList.remove('hidden-tab');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SevaMitra - Professional Home Services Platform</title>
+    <meta
+      name="description"
+      content="SevaMitra - Book trusted professionals for beauty, cleaning, repairs, pest control and more at your doorstep."
+    />
+    <meta
+      name="keywords"
+      content="home services, beauty, cleaning, repairs, pest control, SevaMitra"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .hero-section {
+        background: linear-gradient(125deg, #a8d5ba 1%, #7bc6cc 100%);
+      }
+
+      #services {
+        background: linear-gradient(135deg, #fff5f7 0%, #ffeaef 100%);
+      }
+
+      #professionals {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f7fa 100%);
+      }
+
+      #booking {
+        background: linear-gradient(135deg, #fff8e7 0%, #fff1d6 100%);
+      }
+
+      #about {
+        background: linear-gradient(135deg, #f9f5ff 0%, #eee5ff 100%);
+      }
+
+      .hero-gradient {
+        /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+        background: linear-gradient(125deg, #9ca3af 1%, #6b7280 100%);
+      }
+
+      .service-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        will-change: transform;
+      }
+
+      .service-card:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      @media (max-width: 768px) {
+        .service-card {
+          text-align: center;
+        }
+      }
+
+      .professional-card {
+        transition: all 0.3s ease;
+      }
+
+      .professional-card:hover {
+        transform: scale(1.02);
+      }
+
+      .booking-form {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+      }
+
+      /* Floating animation for hero image */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      .float-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      /* Fade-in for text */
+      .fade-in-left {
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: fadeInLeft 1s forwards;
+        animation-delay: 0.3s;
+      }
+
+      @keyframes fadeInLeft {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .search-container {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+      }
+
+      .search-container input {
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af;
+      }
+
+      .clear-search {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af;
+        cursor: pointer;
+        display: none;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 2rem;
+        color: #6b7280;
+        font-style: italic;
+      }
+
+      /* Animated footer waves */
+      .footer-wave {
+        position: relative;
+        width: 100%;
+        height: 120px;
+        overflow: hidden;
+        background: var(--secondary-color);
+      }
+
+      .wave {
+        position: absolute;
+        width: 200%;
+        height: 100%;
+        background-repeat: repeat no-repeat;
+        background-size: 50% 100%;
+        bottom: 0;
+        opacity: 0.5;
+        animation: waveMove 8s linear infinite;
+      }
+
+      .wave1 {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120"><path fill="%23ffffff" d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z"/></svg>');
+        z-index: 3;
+        animation-duration: 8s;
+      }
+
+      .wave2 {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120"><path fill="%23ffffff" d="M0,50 C360,0 1080,120 1440,50 L1440,120 L0,120 Z"/></svg>');
+        z-index: 2;
+        opacity: 0.3;
+        animation-duration: 10s;
+      }
+
+      .wave3 {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120"><path fill="%23ffffff" d="M0,70 C360,140 1080,20 1440,70 L1440,120 L0,120 Z"/></svg>');
+        z-index: 1;
+        opacity: 0.2;
+        animation-duration: 12s;
+      }
+
+      /* Wave animation */
+      @keyframes waveMove {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Footer content */
+      footer {
+        background: var(--secondary-color);
+        color: var(--text-color);
+        padding: 40px 20px 20px 20px;
+        font-size: 14px;
+        position: relative;
+        z-index: 10;
+      }
+
+      /* Footer layout remains the same as before */
+      .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      footer a {
+        color: var(--text-color);
+        transition: color 0.3s, transform 0.3s;
+      }
+
+      footer a:hover {
+        color: #ff7f50;
+        transform: translateY(-2px);
+      }
+
+      footer .social-icons a {
+        display: inline-block;
+        margin: 0 10px;
+        transition: transform 0.3s, color 0.3s;
+      }
+
+      footer .social-icons a:hover {
+        transform: scale(1.2);
+        color: #1da1f2;
+        /* Example for Twitter icon */
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 dark:bg-gray-900 dark:text-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-purple-600">SevaMitra</span>
+            <div class="hidden md:ml-6 md:flex md:space-x-8">
+              <a
+                href="#services"
+                class="text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium"
+                >Services</a
+              >
+              <a
+                href="#professionals"
+                class="text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium"
+                >Professionals</a
+              >
+              <a
+                href="#about"
+                class="text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium"
+                >About</a
+              >
+              <a
+                href="contact.html"
+                class="text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium"
+                >Contact</a
+              >
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <a
+              href="login-signup.html"
+              class="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 transition duration-200"
+            >
+              Login / Sign Up
+            </a>
+            <a
+              href="profile.html"
+              class="text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium"
+            >
+              Profile</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section
+      class="hero-gradient pt-24 pb-20 md:pt-32 md:pb-28 relative overflow-hidden"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Text Content -->
+          <div class="fade-in-left">
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+            >
+              Professional Home Services at Your Doorstep
+            </h1>
+            <p class="text-xl text-purple-100 mb-8">
+              Book trusted professionals for beauty services, home repairs,
+              cleaning, and more. Quality guaranteed by SevaMitra.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="services"
+                class="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition duration-200"
+              >
+                Book a Service
+              </a>
+              <a
+                href="contact.html"
+                class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition duration-200"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+
+          <!-- Image -->
+          <div class="relative float-animation">
+            <img
+              src="./OIP.jpg"
+              alt="Happy customer receiving professional home service"
+              class="rounded-2xl shadow-2xl w-full"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Arrow -->
+      <a
+        href="#services"
+        class="absolute left-1/2 transform -translate-x-1/2 bottom-10 animate-bounce text-white text-4xl"
+      >
+        <i class="fas fa-chevron-down"></i>
+      </a>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Our Services
+          </h2>
+          <p class="text-xl text-gray-600">
+            Choose from 100+ services across multiple categories
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Beauty Services -->
+          <div
+            class="service-card bg-pink-50 rounded-xl p-6 shadow-lg hover:bg-gradient-to-br hover:from-pink-100 hover:to-pink-200 transition duration-500 hover:shadow-xl hover:scale-105"
+          >
+            <div
+              class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="fas fa-spa text-2xl text-pink-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              Beauty & Spa
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Facials, waxing, haircuts, massages, and more beauty services at
+              home
+            </p>
+            <ul class="space-y-2 text-sm text-gray-500">
+              <li>• Women's Beauty</li>
+              <li>• Men's Grooming</li>
+              <li>• Spa & Massage</li>
+            </ul>
+          </div>
+
+          <!-- Cleaning Services -->
+          <div
+            class="service-card bg-blue-50 rounded-xl p-6 shadow-lg hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-200 transition duration-500 hover:shadow-xl hover:scale-105"
+          >
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="fas fa-broom text-2xl text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Cleaning</h3>
+            <p class="text-gray-600 mb-4">
+              Deep cleaning, regular maintenance, and specialized cleaning
+              services
+            </p>
+            <ul class="space-y-2 text-sm text-gray-500">
+              <li>• Home Cleaning</li>
+              <li>• Office Cleaning</li>
+              <li>• Deep Cleaning</li>
+            </ul>
+          </div>
+
+          <!-- Repair Services -->
+          <div
+            class="service-card bg-green-50 rounded-xl p-6 shadow-lg hover:bg-gradient-to-br hover:from-green-100 hover:to-green-200 transition duration-500 hover:shadow-xl hover:scale-105"
+          >
+            <div
+              class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="fas fa-tools text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">Repairs</h3>
+            <p class="text-gray-600 mb-4">
+              Appliance repair, plumbing, electrical, and carpentry services
+            </p>
+            <ul class="space-y-2 text-sm text-gray-500">
+              <li>• Appliance Repair</li>
+              <li>• Plumbing</li>
+              <li>• Electrical</li>
+            </ul>
+          </div>
+
+          <!-- Pest Control -->
+          <div
+            class="service-card bg-orange-50 rounded-xl p-6 shadow-lg hover:bg-gradient-to-br hover:from-orange-100 hover:to-orange-200 transition duration-500 hover:shadow-xl hover:scale-105"
+          >
+            <div
+              class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <i class="fas fa-bug text-2xl text-orange-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+              Pest Control
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Professional pest control services for homes and offices
+            </p>
+            <ul class="space-y-2 text-sm text-gray-500">
+              <li>• General Pest Control</li>
+              <li>• Termite Control</li>
+              <li>• Mosquito Control</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professionals Section -->
+    <section id="professionals" class="py-20 bg-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Trusted Professionals
+          </h2>
+          <p class="text-xl text-gray-600">
+            Our verified and trained service partners
+          </p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container mb-10 relative">
+          <i
+            class="fas fa-search search-icon absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+          ></i>
+          <input
+            type="text"
+            id="professionalSearch"
+            placeholder="Search professionals by name, service, or specialty..."
+            class="w-full pl-12 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          />
+          <span
+            class="clear-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer"
+            id="clearSearch"
+          >
+            <i class="fas fa-times"></i>
+          </span>
+        </div>
+
+        <div
+          class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          id="professionalsContainer"
+        >
+          <!-- Professional 1 -->
+          <div
+            class="professional-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1d8d3d5c-8d5a-4e4d-bd7d-4e5d5b5b5b5b.png"
+                alt="Professional beautician"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div class="ml-4">
+                <h3 class="font-semibold text-gray-900">Priya Sharma</h3>
+                <p class="text-purple-600">Beauty Expert</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star-half-alt"></i>
+              </div>
+              <span class="ml-2 text-gray-600">4.8 (247 reviews)</span>
+            </div>
+            <p class="text-gray-700 mb-4">
+              Specialized in facials, waxing, and bridal makeup with 5+ years
+              experience
+            </p>
+            <button
+              class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition duration-200"
+            >
+              Book Now
+            </button>
+          </div>
+
+          <!-- Professional 2 -->
+          <div
+            class="professional-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2d8d3d5c-8d5a-4e4d-bd7d-4e5d5b5b5b5b.png"
+                alt="Appliance technician"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div class="ml-4">
+                <h3 class="font-semibold text-gray-900">Rajesh Kumar</h3>
+                <p class="text-purple-600">Appliance Expert</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i>
+              </div>
+              <span class="ml-2 text-gray-600">4.9 (189 reviews)</span>
+            </div>
+            <p class="text-gray-700 mb-4">
+              Expert in AC, refrigerator, and washing machine repairs with 8+
+              years experience
+            </p>
+            <button
+              class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition duration-200"
+            >
+              Book Now
+            </button>
+          </div>
+
+          <!-- Professional 3 -->
+          <div
+            class="professional-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3d8d3d5c-8d5a-4e4d-bd7d-4e5d5b5b5b5b.png"
+                alt="Cleaning expert"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div class="ml-4">
+                <h3 class="font-semibold text-gray-900">Sunita Devi</h3>
+                <p class="text-purple-600">Cleaning Expert</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i>
+              </div>
+              <span class="ml-2 text-gray-600">5.0 (156 reviews)</span>
+            </div>
+            <p class="text-gray-700 mb-4">
+              Specialized in deep cleaning and office cleaning services with 6+
+              years experience
+            </p>
+            <button
+              class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition duration-200"
+            >
+              Book Now
+            </button>
+          </div>
+
+          <!-- Professional 4 -->
+          <div
+            class="professional-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c6c601a4-b5ed-422e-a027-a0540b00cb9d.png"
+                alt="Spa therapist"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div class="ml-4">
+                <h3 class="font-semibold text-gray-900">Anita pal</h3>
+                <p class="text-purple-600">Spa Therapist</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star-half-alt"></i>
+              </div>
+              <span class="ml-2 text-gray-600">4.7 (134 reviews)</span>
+            </div>
+            <p class="text-gray-700 mb-4">
+              Expert in aromatherapy and deep tissue massage with 7+ years
+              experience
+            </p>
+            <button
+              class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition duration-200"
+            >
+              Book Now
+            </button>
+          </div>
+
+          <!-- Professional 5 -->
+          <div
+            class="professional-card bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dfbcd570-da7f-4cb7-a12c-7d2614f22296.png"
+                alt="Plumber"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div class="ml-4">
+                <h3 class="font-semibold text-gray-900">Vikram Singh</h3>
+                <p class="text-purple-600">Plumbing Expert</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i>
+              </div>
+              <span class="ml-2 text-gray-600">4.9 (210 reviews)</span>
+            </div>
+            <p class="text-gray-700 mb-4">
+              Specialized in leak repairs, pipe installations, and bathroom
+              fittings
+            </p>
+            <button
+              class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition duration-200"
+            >
+              Book Now
+            </button>
+          </div>
+
+          <!-- Professional 6 -->
+          <div
+            class="professional-card bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/38742999-e002-472b-945f-a35952645712.png"
+                alt="Pest control specialist"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div class="ml-4">
+                <h3 class="font-semibold text-gray-900">Meera Patel</h3>
+                <p class="text-purple-600">Pest Control Specialist</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i
+                ><i class="far fa-star"></i>
+              </div>
+              <span class="ml-2 text-gray-600">4.5 (98 reviews)</span>
+            </div>
+            <p class="text-gray-700 mb-4">
+              Experienced in termite control, mosquito management, and general
+              pest removal
+            </p>
+            <button
+              class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition duration-200"
+            >
+              Book Now
+            </button>
+          </div>
+
+          <!-- Professional 7 -->
+          <div
+            class="professional-card bg-gradient-to-br from-teal-50 to-green-50 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/85bdd5cd-8677-4dfd-ab63-e001fff4fc3b.png"
+                alt="Electrician"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div class="ml-4">
+                <h3 class="font-semibold text-gray-900">Suresh Kumar</h3>
+                <p class="text-purple-600">Electrical Expert</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i>
+              </div>
+              <span class="ml-2 text-gray-600">5.0 (175 reviews)</span>
+            </div>
+            <p class="text-gray-700 mb-4">
+              Skilled in wiring, lighting installation, and electrical
+              troubleshooting
+            </p>
+            <button
+              class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition duration-200"
+            >
+              Book Now
+            </button>
+          </div>
+
+          <!-- Professional 8 -->
+          <div
+            class="professional-card bg-gradient-to-br from-rose-50 to-red-50 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/06e59fc4-9eb1-47e0-8c95-779c5cdacebf.png"
+                alt="Carpenter"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div class="ml-4">
+                <h3 class="font-semibold text-gray-900">Kavita Joshi</h3>
+                <p class="text-purple-600">Carpentry Expert</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i
+                ><i class="far fa-star"></i>
+              </div>
+              <span class="ml-2 text-gray-600">4.6 (120 reviews)</span>
+            </div>
+            <p class="text-gray-700 mb-4">
+              Experienced in furniture making, repairs, and custom woodwork
+            </p>
+            <button
+              class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition duration-200"
+            >
+              Book Now
+            </button>
+          </div>
+
+          <!-- Professional 9 -->
+          <div
+            class="professional-card bg-gradient-to-br from-sky-50 to-blue-50 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/296afff7-bde7-4d1c-ae98-3eb37ee3d3f0.png"
+                alt="Painter"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div class="ml-4">
+                <h3 class="font-semibold text-gray-900">Amit Verma</h3>
+                <p class="text-purple-600">Painting Expert</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-4">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                ><i class="far fa-star"></i>
+              </div>
+              <span class="ml-2 text-gray-600">4.8 (142 reviews)</span>
+            </div>
+            <p class="text-gray-700 mb-4">
+              Specializes in interior and exterior painting with attention to
+              detail
+            </p>
+            <button
+              class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-lg hover:from-purple-600 hover:to-pink-600 transition duration-200"
+            >
+              Book Now
+            </button>
+          </div>
+
+          <!-- No Results Message -->
+          <div
+            class="no-results hidden text-center col-span-full py-10"
+            id="noResults"
+          >
+            <i class="fas fa-search fa-2x mb-4 text-gray-400"></i>
+            <h3 class="text-xl font-semibold mb-2 text-gray-700">
+              No professionals found
+            </h3>
+            <p class="text-gray-600">
+              Try adjusting your search terms or browse all professionals
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Steps -->
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Book Your Service in 3 Easy Steps
+            </h2>
+            <div class="space-y-6">
+              <!-- Step 1 -->
+              <div
+                class="flex items-start p-4 rounded-xl bg-purple-50 hover:bg-gradient-to-r hover:from-purple-100 hover:to-purple-200 transition duration-500"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                >
+                  <span class="text-xl font-bold text-purple-600">1</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                    Choose Service
+                  </h3>
+                  <p class="text-gray-600">
+                    Select from 100+ services across multiple categories
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div
+                class="flex items-start p-4 rounded-xl bg-purple-50 hover:bg-gradient-to-r hover:from-purple-100 hover:to-purple-200 transition duration-500"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                >
+                  <span class="text-xl font-bold text-purple-600">2</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                    Select Time Slot
+                  </h3>
+                  <p class="text-gray-600">
+                    Pick a convenient time slot that works for you
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div
+                class="flex items-start p-4 rounded-xl bg-purple-50 hover:bg-gradient-to-r hover:from-purple-100 hover:to-purple-200 transition duration-500"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+                >
+                  <span class="text-xl font-bold text-purple-600">3</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                    Get Served
+                  </h3>
+                  <p class="text-gray-600">
+                    Our trained professional will arrive at your doorstep
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Booking Form -->
+          <div
+            class="booking-form rounded-2xl p-8 shadow-2xl bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 transition duration-500"
+          >
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">
+              Book a Service
+            </h3>
+            <form
+              id="bookingForm"
+              action="/book-service"
+              method="POST"
+              class="space-y-4"
+            >
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Service Type</label
+                >
+                <select
+                  name="serviceType"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400"
+                >
+                  <option>Select Service</option>
+                  <option>Beauty Services</option>
+                  <option>Cleaning Services</option>
+                  <option>Appliance Repair</option>
+                  <option>Plumbing</option>
+                  <option>Electrical</option>
+                  <option>Pest Control</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Date & Time</label
+                >
+                <input
+                  type="datetime-local"
+                  name="dateTime"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Your Location</label
+                >
+                <input
+                  type="text"
+                  name="location"
+                  placeholder="Enter your address"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-400"
+                />
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition duration-200"
+              >
+                Confirm Booking
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Why Choose SevaMitra?
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="text-center p-6 bg-purple-50 rounded-xl shadow-md hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200 transition duration-500"
+          >
+            <div
+              class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <i class="fas fa-shield-alt text-3xl text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">
+              Quality Guaranteed
+            </h3>
+            <p class="text-gray-600">
+              Every service comes with our quality promise and satisfaction
+              guarantee
+            </p>
+          </div>
+
+          <div
+            class="text-center p-6 bg-purple-50 rounded-xl shadow-md hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200 transition duration-500"
+          >
+            <div
+              class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <i class="fas fa-user-check text-3xl text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">
+              Verified Professionals
+            </h3>
+            <p class="text-gray-600">
+              All our service partners are background verified and trained
+            </p>
+          </div>
+
+          <div
+            class="text-center p-6 bg-purple-50 rounded-xl shadow-md hover:bg-gradient-to-br hover:from-purple-100 hover:to-purple-200 transition duration-500"
+          >
+            <div
+              class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <i class="fas fa-headset text-3xl text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">
+              24/7 Support
+            </h3>
+            <p class="text-gray-600">
+              Round-the-clock customer support for all your queries and concerns
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <!-- Animated Waves -->
+    <div class="footer-wave">
+      <div class="wave wave1"></div>
+      <div class="wave wave2"></div>
+      <div class="wave wave3"></div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h2>SevaMitra</h2>
+          <p>Helping you report civic issues with ease.</p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Report Issue</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 SevaMitra. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+      // Booking form alert
+      document.addEventListener("DOMContentLoaded", function () {
+        const bookingForm = document.querySelector("form");
+        if (bookingForm) {
+          bookingForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert(
+              "Thank you! Your service booking request has been received. Our team will contact you shortly."
+            );
+            bookingForm.reset();
+          });
+        }
+      });
+
+      document
+        .getElementById("bookingForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(this);
+
+          fetch("/book-service", {
+            method: "POST",
+            body: new URLSearchParams(formData),
+          })
+            .then((response) => response.text())
+            .then((data) => {
+              alert(data); // shows "Booking confirmed!"
+              this.reset();
+            })
+            .catch((err) => alert("Error: " + err));
+        });
+
+      // Professional search filter
+      const searchInput = document.getElementById("professionalSearch");
+      const clearSearch = document.getElementById("clearSearch");
+      const noResults = document.getElementById("noResults");
+
+      searchInput.addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+        const professionals = document.querySelectorAll(
+          ".professional-card:not(#noResults)"
+        );
+        let visibleCount = 0;
+
+        // Show/hide clear button
+        clearSearch.style.display = query ? "block" : "none";
+
+        professionals.forEach((card) => {
+          const name = card.querySelector("h3").textContent.toLowerCase();
+          const expertise = card
+            .querySelector("p.text-purple-600")
+            .textContent.toLowerCase();
+          const description = card
+            .querySelector("p.text-gray-600")
+            .textContent.toLowerCase();
+
+          if (
+            name.includes(query) ||
+            expertise.includes(query) ||
+            description.includes(query)
+          ) {
+            card.style.display = "";
+            visibleCount++;
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+        // Show no results message if no professionals match
+        if (visibleCount === 0 && query) {
+          noResults.classList.remove("hidden");
+        } else {
+          noResults.classList.add("hidden");
+        }
+      });
+
+      // Clear search functionality
+      clearSearch.addEventListener("click", function () {
+        searchInput.value = "";
+        clearSearch.style.display = "none";
+        const professionals = document.querySelectorAll(
+          ".professional-card:not(#noResults)"
+        );
+
+        professionals.forEach((card) => {
+          card.style.display = "";
+        });
+
+        noResults.classList.add("hidden");
+        searchInput.focus();
+      });
+
+      {
+        services.map((service) => (
+          <div key={service.id} className="service-card ...">
+            <div
+              className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${service.bgColor}`}
+            >
+              <i
+                className={`${service.icon} text-2xl ${service.iconColor}`}
+              ></i>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              {service.title}
+            </h3>
+            <p className="text-gray-600 mb-4">{service.description}</p>
+          </div>
+        ));
+      }
+    </script>
+  </body>
+</html>

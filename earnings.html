@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Earnings - SevaMitra</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-8">
+  <h1 class="text-3xl font-bold mb-6">My Earnings</h1>
+  <div id="earnings-container"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const userId = 1; // replace with logged-in user ID
+      fetch(`http://127.0.0.1:3000/earnings/${userId}`)
+        .then(res => res.json())
+        .then(earnings => {
+          const container = document.getElementById('earnings-container');
+          container.innerHTML = earnings.map(e => `
+            <div class="bg-white rounded-xl p-4 shadow mb-4">
+              <h3 class="font-semibold text-lg">${e.service_name}</h3>
+              <p>Amount: ₹${e.amount}</p>
+              <p>Date: ${new Date(e.earned_at).toLocaleString()}</p>
+            </div>
+          `).join('');
+        });
+    });
+  </script>
+</body>
+</html>

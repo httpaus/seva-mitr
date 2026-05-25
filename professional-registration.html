@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SevaMitra - Professional Registration</title>
+  <meta name="description" content="Register as a SevaMitra professional and grow your business by providing trusted home services.">
+<meta name="keywords" content="SevaMitra professional registration, join SevaMitra, service provider signup, become a partner">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .form-container {
+      max-width: 600px;
+    }
+    .professional-card {
+      border: 2px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .professional-card:hover {
+      border-color: #8b5cf6;
+      transform: translateY(-2px);
+    }
+    .professional-card.selected {
+      border-color: #8b5cf6;
+      background-color: #faf5ff;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen font-sans p-4">
+  <div class="bg-white rounded-xl shadow-2xl p-8 form-container w-full">
+    <!-- Back Links -->
+    <div class="flex justify-between mb-6">
+      <a href="index.html" class="text-purple-600 hover:underline font-medium">
+        &larr; Back to Home
+      </a>
+      <a href="login-signup.html" class="text-purple-600 hover:underline font-medium">
+        Back to Login
+      </a>
+    </div>
+
+    <!-- Professional Registration Form -->
+    <form id="professionalForm" class="space-y-6">
+      <h2 class="text-3xl font-bold text-purple-600 text-center mb-6">Join as a Professional</h2>
+      <p class="text-gray-600 text-center mb-8">Complete your profile to start offering services on SevaMitra</p>
+
+      <!-- Personal Information -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Personal Information</h3>
+        
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              required
+              placeholder="First name"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            />
+            <p class="mt-1 text-sm text-red-600 hidden" id="firstNameError">First name is required</p>
+          </div>
+
+          <div>
+            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              required
+              placeholder="Last name"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            />
+            <p class="mt-1 text-sm text-red-600 hidden" id="lastNameError">Last name is required</p>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="you@example.com"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          />
+          <p class="mt-1 text-sm text-red-600 hidden" id="emailError">Please enter a valid email address</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-4">
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              placeholder="+91 1234567890"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            />
+            <p class="mt-1 text-sm text-red-600 hidden" id="phoneError">Phone number is required</p>
+          </div>
+
+          <div>
+            <label for="experience" class="block text-sm font-medium text-gray-700 mb-2">Years of Experience *</label>
+            <input
+              type="number"
+              id="experience"
+              name="experience"
+              required
+              min="0"
+              placeholder="0"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            />
+            <p class="mt-1 text-sm text-red-600 hidden" id="experienceError">Please enter experience</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional Details -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Professional Details</h3>
+        
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-3">Select Your Profession *</label>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div class="professional-card" onclick="selectProfession('beauty')" id="beautyCard">
+              <div class="text-center">
+                <i class="fas fa-spa text-xl text-pink-600 mb-2"></i>
+                <p class="text-sm font-medium">Beauty & Spa</p>
+              </div>
+            </div>
+            <div class="professional-card" onclick="selectProfession('cleaning')" id="cleaningCard">
+              <div class="text-center">
+                <i class="fas fa-broom text-xl text-blue-600 mb-2"></i>
+                <p class="text-sm font-medium">Cleaning</p>
+              </div>
+            </div>
+            <div class="professional-card" onclick="selectProfession('plumbing')" id="plumbingCard">
+              <div class="text-center">
+                <i class="fas fa-faucet text-xl text-blue-400 mb-2"></i>
+                <p class="text-sm font-medium">Plumbing</p>
+              </div>
+            </div>
+            <div class="professional-card" onclick="selectProfession('electrical')" id="electricalCard">
+              <div class="text-center">
+                <i class="fas fa-bolt text-xl text-yellow-600 mb-2"></i>
+                <p class="text-sm font-medium">Electrical</p>
+              </div>
+            </div>
+            <div class="professional-card" onclick="selectProfession('carpentry')" id="carpentryCard">
+              <div class="text-center">
+                <i class="fas fa-hammer text-xl text-amber-600 mb-2"></i>
+                <p class="text-sm font-medium">Carpentry</p>
+              </div>
+            </div>
+            <div class="professional-card" onclick="selectProfession('appliance')" id="applianceCard">
+              <div class="text-center">
+                <i class="fas fa-tools text-xl text-green-600 mb-2"></i>
+                <p class="text-sm font-medium">Appliance Repair</p>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="profession" name="profession" value="" required>
+          <p class="mt-1 text-sm text-red-600 hidden" id="professionError">Please select your profession</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label for="hourlyRate" class="block text-sm font-medium text-gray-700 mb-2">Hourly Rate (₹) *</label>
+            <input
+              type="number"
+              id="hourlyRate"
+              name="hourlyRate"
+              required
+              min="100"
+              placeholder="500"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            />
+            <p class="mt-1 text-sm text-red-600 hidden" id="hourlyRateError">Please enter hourly rate</p>
+          </div>
+
+          <div>
+            <label for="availability" class="block text-sm font-medium text-gray-700 mb-2">Availability *</label>
+            <select
+              id="availability"
+              name="availability"
+              required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            >
+              <option value="">Select availability</option>
+              <option value="full_time">Full Time</option>
+              <option value="part_time">Part Time</option>
+              <option value="weekends">Weekends Only</option>
+              <option value="flexible">Flexible</option>
+            </select>
+            <p class="mt-1 text-sm text-red-600 hidden" id="availabilityError">Please select availability</p>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label for="skills" class="block text-sm font-medium text-gray-700 mb-2">Skills & Specializations</label>
+          <textarea
+            id="skills"
+            name="skills"
+            rows="3"
+            placeholder="List your skills and specializations (e.g., AC repair, deep cleaning, bridal makeup)"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Location Information -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Location Information</h3>
+        
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label for="city" class="block text-sm font-medium text-gray-700 mb-2">City *</label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              required
+              placeholder="Enter your city"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            />
+            <p class="mt-1 text-sm text-red-600 hidden" id="cityError">City is required</p>
+          </div>
+
+          <div>
+            <label for="state" class="block text-sm font-medium text-gray-700 mb-2">State *</label>
+            <select
+              id="state"
+              name="state"
+              required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            >
+              <option value="">Select state</option>
+              <option value="delhi">Delhi</option>
+              <option value="mumbai">Mumbai</option>
+              <option value="bangalore">Bangalore</option>
+              <option value="chennai">Chennai</option>
+              <option value="hyderabad">Hyderabad</option>
+              <option value="kolkata">Kolkata</option>
+              <option value="pune">Pune</option>
+              <option value="ahmedabad">Ahmedabad</option>
+            </select>
+            <p class="mt-1 text-sm text-red-600 hidden" id="stateError">Please select state</p>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label for="pincode" class="block text-sm font-medium text-gray-700 mb-2">PIN Code *</label>
+          <input
+            type="text"
+            id="pincode"
+            name="pincode"
+            required
+            pattern="[0-9]{6}"
+            placeholder="560001"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          />
+          <p class="mt-1 text-sm text-red-600 hidden" id="pincodeError">Please enter valid PIN code</p>
+        </div>
+      </div>
+
+      <!-- Documents -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Documents & Verification</h3>
+        
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">ID Proof (Aadhar/PAN) *</label>
+            <input
+              type="file"
+              id="idProof"
+              name="idProof"
+              accept=".jpg,.jpeg,.png,.pdf"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            />
+            <p class="mt-1 text-sm text-gray-500">Upload scanned copy of Aadhar card or PAN card</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Profile Photo *</label>
+            <input
+              type="file"
+              id="profilePhoto"
+              name="profilePhoto"
+              accept=".jpg,.jpeg,.png"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            />
+            <p class="mt-1 text-sm text-gray-500">Clear professional photo for your profile</p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Certificates (Optional)</label>
+            <input
+              type="file"
+              id="certificates"
+              name="certificates"
+              accept=".jpg,.jpeg,.png,.pdf"
+              multiple
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            />
+            <p class="mt-1 text-sm text-gray-500">Upload any relevant certificates or training documents</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <label class="flex items-start">
+          <input type="checkbox" id="terms" name="terms" class="rounded border-gray-300 text-purple-600 focus:ring-purple-600 mt-1" required>
+          <span class="ml-2 text-sm text-gray-600">
+            I agree to the <a href="#" class="text-purple-600 hover:underline">Terms of Service</a>, 
+            <a href="#" class="text-purple-600 hover:underline">Privacy Policy</a>, and 
+            <a href="#" class="text-purple-600 hover:underline">Professional Code of Conduct</a>
+          </span>
+        </label>
+        <p class="mt-1 text-sm text-red-600 hidden" id="termsError">Please accept the terms and conditions</p>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-purple-600 text-white py-4 rounded-lg font-semibold hover:bg-purple-700 transition duration-200 transform hover:scale-105 text-lg"
+      >
+        Complete Registration
+      </button>
+
+      <p class="text-center text-gray-600 text-sm">
+        Already have an account? 
+        <a href="login-signup.html" class="text-purple-600 hover:underline font-medium">Log in here</a>
+      </p>
+    </form>
+
+    <!-- Success Message (Hidden) -->
+    <div id="successMessage" class="text-center p-6 bg-green-50 rounded-lg border border-green-200 hidden mt-6">
+      <i class="fas fa-check-circle text-green-500 text-4xl mb-3"></i>
+      <h3 class="text-lg font-semibold text-green-800 mb-2">Registration Successful!</h3>
+      <p class="text-green-600 mb-4">Your professional profile has been submitted for verification.</p>
+      <a href="index.html" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-200">
+        Go to Homepage
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Select Profession
+    function selectProfession(profession) {
+      // Reset all selections
+      document.querySelectorAll('.professional-card').forEach(card => {
+        card.classList.remove('selected');
+      });
+      
+      // Set new selection
+      document.getElementById(profession + 'Card').classList.add('selected');
+      document.getElementById('profession').value = profession;
+      document.getElementById('professionError').classList.add('hidden');
+    }
+
+    // Form Validation
+    document.getElementById('professionalForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      let isValid = true;
+
+      // Reset all errors
+      document.querySelectorAll('.text-red-600').forEach(el => el.classList.add('hidden'));
+
+      // Required field validation
+      const requiredFields = [
+        'firstName', 'lastName', 'email', 'phone', 'experience', 
+        'profession', 'hourlyRate', 'availability', 'city', 'state', 'pincode'
+      ];
+
+      requiredFields.forEach(field => {
+        const element = document.getElementById(field);
+        if (!element.value.trim()) {
+          document.getElementById(field + 'Error').classList.remove('hidden');
+          isValid = false;
+        }
+      });
+
+      // Email validation
+      const email = document.getElementById('email');
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email.value.trim())) {
+        document.getElementById('emailError').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Phone validation
+      const phone = document.getElementById('phone');
+      if (phone.value.trim().length < 10) {
+        document.getElementById('phoneError').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Terms validation
+      if (!document.getElementById('terms').checked) {
+        document.getElementById('termsError').classList.remove('hidden');
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Simulate successful registration
+        document.getElementById('professionalForm').classList.add('hidden');
+        document.getElementById('successMessage').classList.remove('hidden');
+        
+        // You would typically send the form data to your backend here
+        console.log('Professional registration data:', {
+          firstName: document.getElementById('firstName').value,
+          lastName: document.getElementById('lastName').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          experience: document.getElementById('experience').value,
+          profession: document.getElementById('profession').value,
+          hourlyRate: document.getElementById('hourlyRate').value,
+          availability: document.getElementById('availability').value,
+          skills: document.getElementById('skills').value,
+          city: document.getElementById('city').value,
+          state: document.getElementById('state').value,
+          pincode: document.getElementById('pincode').value
+        });
+      }
+    });
+
+    // PIN code validation
+    document.getElementById('pincode').addEventListener('input', function (e) {
+      this.value = this.value.replace(/[^0-9]/g, '');
+      if (this.value.length > 6) {
+        this.value = this.value.slice(0, 6);
+      }
+    });
+  </script>
+</body>
+</html>

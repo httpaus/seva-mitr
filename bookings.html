@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - SevaMitra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+    <nav class="bg-white shadow-lg p-4">
+        <span class="text-2xl font-bold text-purple-600">SevaMitra</span>
+        <a href="index.html" class="ml-4 text-purple-600">Home</a>
+    </nav>
+
+    <section class="max-w-4xl mx-auto p-6 mt-8 bg-white rounded-lg shadow">
+        <h2 class="text-3xl font-bold mb-6 text-gray-900">My Bookings</h2>
+        <div id="bookingsList" class="space-y-4">
+            <!-- Bookings will appear here -->
+        </div>
+    </section>
+
+    <script>
+        async function loadBookings() {
+            try {
+                const response = await fetch('/bookings');
+                const bookings = await response.json();
+                const container = document.getElementById('bookingsList');
+                container.innerHTML = '';
+
+                if (bookings.length === 0) {
+                    container.innerHTML = '<p class="text-gray-600">No bookings found.</p>';
+                    return;
+                }
+
+                bookings.forEach(b => {
+                    const div = document.createElement('div');
+                    div.className = 'p-4 bg-gray-100 rounded-lg shadow flex justify-between items-center';
+                    div.innerHTML = `
+                        <div>
+                            <p><strong>Service:</strong> ${b.service_type}</p>
+                            <p><strong>Date & Time:</strong> ${new Date(b.date_time).toLocaleString()}</p>
+                            <p><strong>Location:</strong> ${b.location}</p>
+                        </div>
+                        <span class="text-gray-500 text-sm">${new Date(b.created_at).toLocaleString()}</span>
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (err) {
+                console.error(err);
+                document.getElementById('bookingsList').innerHTML = '<p class="text-red-500">Error loading bookings.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadBookings);
+    </script>
+</body>
+</html>

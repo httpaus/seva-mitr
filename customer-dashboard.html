@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard - SevaMitra</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Sidebar -->
+  <div class="flex h-screen">
+    <aside class="w-64 bg-purple-800 text-white flex flex-col">
+      <div class="p-6 text-2xl font-bold border-b border-purple-600">
+        SevaMitra
+      </div>
+      <nav class="flex-1 p-4 space-y-4">
+        <a href="#dashboard" class="block p-2 rounded hover:bg-purple-600">Dashboard</a>
+        <a href="#bookings" class="block p-2 rounded hover:bg-purple-600">My Bookings</a>
+        <a href="#profile" class="block p-2 rounded hover:bg-purple-600">My Profile</a>
+        <a href="#support" class="block p-2 rounded hover:bg-purple-600">Support</a>
+      </nav>
+      <a href="index.html" class="p-4 bg-purple-700 text-center hover:bg-purple-600">Logout</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 overflow-y-auto">
+      
+      <!-- Dashboard -->
+      <section id="dashboard" class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Welcome, Customer!</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-semibold">Total Bookings</h3>
+            <p class="text-2xl mt-2">12</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-semibold">Active Services</h3>
+            <p class="text-2xl mt-2">3</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-semibold">Pending Payments</h3>
+            <p class="text-2xl mt-2">₹850</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- My Bookings -->
+      <section id="bookings" class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">My Bookings</h2>
+        <div class="bg-white rounded-lg shadow overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-purple-100">
+                <th class="p-3 border">Service</th>
+                <th class="p-3 border">Date</th>
+                <th class="p-3 border">Status</th>
+                <th class="p-3 border">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-3 border">Plumber</td>
+                <td class="p-3 border">30 Aug 2025</td>
+                <td class="p-3 border text-green-600">Completed</td>
+                <td class="p-3 border">₹500</td>
+              </tr>
+              <tr>
+                <td class="p-3 border">Electrician</td>
+                <td class="p-3 border">2 Sep 2025</td>
+                <td class="p-3 border text-yellow-600">Pending</td>
+                <td class="p-3 border">₹350</td>
+              </tr>
+              <tr>
+                <td class="p-3 border">Home Cleaning</td>
+                <td class="p-3 border">5 Sep 2025</td>
+                <td class="p-3 border text-blue-600">Upcoming</td>
+                <td class="p-3 border">₹1200</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Profile -->
+      <section id="profile" class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">My Profile</h2>
+        <div class="bg-white p-6 rounded-lg shadow space-y-4">
+          <div>
+            <label class="block text-sm font-medium">Full Name</label>
+            <input type="text" value="Ramesh Kumar" class="w-full border p-2 rounded" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Email</label>
+            <input type="email" value="ramesh@example.com" class="w-full border p-2 rounded" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium">Phone</label>
+            <input type="text" value="+91 9876543210" class="w-full border p-2 rounded" />
+          </div>
+          <button class="bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-600">Update Profile</button>
+        </div>
+      </section>
+
+      <!-- Support -->
+      <section id="support">
+        <h2 class="text-2xl font-bold mb-4">Support</h2>
+        <div class="bg-white p-6 rounded-lg shadow space-y-4">
+          <p>If you face any issues, contact our support team.</p>
+          <p>Email: <a href="mailto:support@sevamitra.com" class="text-purple-700 underline">support@sevamitra.com</a></p>
+          <p>Phone: +91 1800-123-456</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+</body>
+</html>

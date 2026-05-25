@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SevaMitra - Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 font-sans">
+
+<!-- Navigation (reuse from index.html) -->
+<nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <div class="flex items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-purple-600">SevaMitra</span>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:space-x-8">
+                    <a href="index.html#services" class="text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium">Services</a>
+                    <a href="bookings.html" class="text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium">Bookings</a>
+                    <a href="profile.html" class="text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium">Profile</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="login-signup.html" class="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 transition duration-200">Login / Sign Up</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<section class="pt-24 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">All Services</h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4">
+                <i class="fas fa-spa text-2xl text-pink-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Beauty & Spa</h3>
+            <p class="text-gray-600 text-sm">Facials, waxing, haircuts, massages</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <i class="fas fa-broom text-2xl text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Cleaning Services</h3>
+            <p class="text-gray-600 text-sm">Home cleaning, office cleaning, deep cleaning</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                <i class="fas fa-tools text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Repairs</h3>
+            <p class="text-gray-600 text-sm">Appliance, plumbing, electrical repairs</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <i class="fas fa-bug text-2xl text-orange-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Pest Control</h3>
+            <p class="text-gray-600 text-sm">General pest, termite, mosquito control</p>
+        </div>
+    </div>
+</section>
+</body>
+</html>

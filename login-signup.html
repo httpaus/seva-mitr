@@ -1,0 +1,355 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SevaMitra - Login & Sign Up</title>
+  <meta name="description" content="Login or Signup to SevaMitra to book trusted professionals for home services quickly.">
+<meta name="keywords" content="SevaMitra login, SevaMitra signup, book home services, create account">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .form-container {
+      transition: all 0.3s ease;
+    }
+    .hidden-form {
+      display: none;
+    }
+    .active-tab {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen font-sans p-4">
+  <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full">
+    <!-- Back to Home Link -->
+    <div class="mb-6 text-center">
+      <a href="index.html" class="text-purple-600 hover:underline font-medium">
+        &larr; Back to Home
+      </a>
+    </div>
+
+    <!-- Professional Login Link -->
+    <div class="mb-4 text-center">
+      <a href="professional-login.html" class="text-purple-600 hover:underline font-medium">
+        <i class="fas fa-tools mr-2"></i>Are you a professional? Login here
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex mb-8 bg-gray-100 rounded-lg p-1">
+      <button id="loginTab" class="flex-1 py-3 px-4 rounded-lg font-semibold text-gray-700 active-tab transition-colors duration-200">
+        Login
+      </button>
+      <button id="signupTab" class="flex-1 py-3 px-4 rounded-lg font-semibold text-gray-700 hover:text-purple-600 transition-colors duration-200">
+        Sign Up
+      </button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form-container space-y-6">
+      <h2 class="text-2xl font-bold text-purple-600 text-center mb-6">Welcome Back!</h2>
+      
+      <div>
+        <label for="loginEmail" class="block text-sm font-medium text-gray-700 mb-2">Email address</label>
+        <input
+          type="email"
+          id="loginEmail"
+          name="email"
+          required
+          placeholder="you@example.com"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200"
+        />
+        <p class="mt-1 text-sm text-red-600 hidden" id="loginEmailError">Please enter a valid email address</p>
+      </div>
+
+      <div>
+        <label for="loginPassword" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+        <input
+          type="password"
+          id="loginPassword"
+          name="password"
+          required
+          placeholder="Enter your password"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200"
+          minlength="6"
+        />
+        <p class="mt-1 text-sm text-red-600 hidden" id="loginPasswordError">Password must be at least 6 characters</p>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <label class="flex items-center">
+          <input type="checkbox" class="rounded border-gray-300 text-purple-600 focus:ring-purple-600">
+          <span class="ml-2 text-sm text-gray-600">Remember me</span>
+        </label>
+        <a href="#" class="text-sm text-purple-600 hover:underline">Forgot password?</a>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition duration-200 transform hover:scale-105"
+      >
+        Log In
+      </button>
+
+      <p class="text-center text-gray-600 text-sm">
+        Don't have an account? 
+        <a href="#" id="switchToSignup" class="text-purple-600 hover:underline font-medium">Sign up now</a>
+      </p>
+    </form>
+
+    <!-- Sign Up Form -->
+    <form id="signupForm" class="form-container space-y-6 hidden-form">
+      <h2 class="text-2xl font-bold text-purple-600 text-center mb-6">Create Account</h2>
+      
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            required
+            placeholder="First name"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200"
+          />
+          <p class="mt-1 text-sm text-red-600 hidden" id="firstNameError">First name is required</p>
+        </div>
+
+        <div>
+          <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            required
+            placeholder="Last name"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200"
+          />
+          <p class="mt-1 text-sm text-red-600 hidden" id="lastNameError">Last name is required</p>
+        </div>
+      </div>
+
+      <div>
+        <label for="signupEmail" class="block text-sm font-medium text-gray-700 mb-2">Email address</label>
+        <input
+          type="email"
+          id="signupEmail"
+          name="email"
+          required
+          placeholder="you@example.com"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200"
+        />
+        <p class="mt-1 text-sm text-red-600 hidden" id="signupEmailError">Please enter a valid email address</p>
+      </div>
+
+      <div>
+        <label for="signupPassword" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+        <input
+          type="password"
+          id="signupPassword"
+          name="password"
+          required
+          placeholder="Create a password"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200"
+          minlength="6"
+        />
+        <p class="mt-1 text-sm text-gray-500">Minimum 6 characters</p>
+        <p class="mt-1 text-sm text-red-600 hidden" id="signupPasswordError">Password must be at least 6 characters</p>
+      </div>
+
+      <div>
+        <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          required
+          placeholder="Confirm your password"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors duration-200"
+        />
+        <p class="mt-1 text-sm text-red-600 hidden" id="confirmPasswordError">Passwords do not match</p>
+      </div>
+
+      <label class="flex items-start">
+        <input type="checkbox" class="rounded border-gray-300 text-purple-600 focus:ring-purple-600 mt-1" required>
+        <span class="ml-2 text-sm text-gray-600">
+          I agree to the <a href="#" class="text-purple-600 hover:underline">Terms of Service</a> and <a href="#" class="text-purple-600 hover:underline">Privacy Policy</a>
+        </span>
+      </label>
+
+      <button
+        type="submit"
+        class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition duration-200 transform hover:scale-105"
+      >
+        Create Account
+      </button>
+
+      <p class="text-center text-gray-600 text-sm">
+        Already have an account? 
+        <a href="#" id="switchToLogin" class="text-purple-600 hover:underline font-medium">Log in</a>
+      </p>
+
+      <!-- Professional Registration Link -->
+      <div class="mt-6 pt-4 border-t border-gray-200 text-center">
+        <p class="text-gray-600 text-sm mb-2">Want to offer your services?</p>
+        <a href="professional-registration.html" class="text-purple-600 hover:underline font-medium">
+          <i class="fas fa-tools mr-2"></i>Register as Professional
+        </a>
+      </div>
+    </form>
+
+    <!-- Success Message (Hidden) -->
+    <div id="successMessage" class="text-center p-6 bg-green-50 rounded-lg border border-green-200 hidden">
+      <i class="fas fa-check-circle text-green-500 text-4xl mb-3"></i>
+      <h3 class="text-lg font-semibold text-green-800 mb-2">Success!</h3>
+      <p class="text-green-600" id="successText">Your account has been created successfully.</p>
+    </div>
+  </div>
+
+  <script>
+    // DOM Elements
+    const loginTab = document.getElementById('loginTab');
+    const signupTab = document.getElementById('signupTab');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const switchToSignup = document.getElementById('switchToSignup');
+    const switchToLogin = document.getElementById('switchToLogin');
+    const successMessage = document.getElementById('successMessage');
+    const successText = document.getElementById('successText');
+
+    // Toggle between forms
+    function showForm(formType) {
+      if (formType === 'login') {
+        loginForm.classList.remove('hidden-form');
+        signupForm.classList.add('hidden-form');
+        successMessage.classList.add('hidden');
+        loginTab.classList.add('active-tab');
+        signupTab.classList.remove('active-tab');
+      } else {
+        loginForm.classList.add('hidden-form');
+        signupForm.classList.remove('hidden-form');
+        successMessage.classList.add('hidden');
+        loginTab.classList.remove('active-tab');
+        signupTab.classList.add('active-tab');
+      }
+    }
+
+    // Event Listeners
+    loginTab.addEventListener('click', () => showForm('login'));
+    signupTab.addEventListener('click', () => showForm('signup'));
+    switchToSignup.addEventListener('click', (e) => {
+      e.preventDefault();
+      showForm('signup');
+    });
+    switchToLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      showForm('login');
+    });
+
+    // Login Form Validation
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      let isValid = true;
+      const email = document.getElementById('loginEmail');
+      const password = document.getElementById('loginPassword');
+      const emailError = document.getElementById('loginEmailError');
+      const passwordError = document.getElementById('loginPasswordError');
+
+      // Reset errors
+      emailError.classList.add('hidden');
+      passwordError.classList.add('hidden');
+
+      // Email validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email.value.trim())) {
+        emailError.classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Password validation
+      if (password.value.length < 6) {
+        passwordError.classList.remove('hidden');
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Simulate login success
+        successText.textContent = 'Login successful! Welcome back to SevaMitra.';
+        successMessage.classList.remove('hidden');
+        loginForm.classList.add('hidden-form');
+        setTimeout(() => {
+          loginForm.reset();
+        }, 1000);
+      }
+    });
+
+    // Sign Up Form Validation
+    signupForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      let isValid = true;
+      const firstName = document.getElementById('firstName');
+      const lastName = document.getElementById('lastName');
+      const email = document.getElementById('signupEmail');
+      const password = document.getElementById('signupPassword');
+      const confirmPassword = document.getElementById('confirmPassword');
+
+      // Reset all errors
+      document.querySelectorAll('#signupForm p.text-red-600').forEach(el => el.classList.add('hidden'));
+
+      // First name validation
+      if (!firstName.value.trim()) {
+        document.getElementById('firstNameError').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Last name validation
+      if (!lastName.value.trim()) {
+        document.getElementById('lastNameError').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Email validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email.value.trim())) {
+        document.getElementById('signupEmailError').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Password validation
+      if (password.value.length < 6) {
+        document.getElementById('signupPasswordError').classList.remove('hidden');
+        isValid = false;
+      }
+
+      // Confirm password validation
+      if (password.value !== confirmPassword.value) {
+        document.getElementById('confirmPasswordError').classList.remove('hidden');
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Simulate signup success
+        successText.textContent = 'Your SevaMitra account has been created successfully!';
+        successMessage.classList.remove('hidden');
+        signupForm.classList.add('hidden-form');
+        setTimeout(() => {
+          signupForm.reset();
+          showForm('login');
+        }, 2000);
+      }
+    });
+
+    // Initialize with login form
+    showForm('login');
+  </script>
+</body>
+</html>
